@@ -27,16 +27,21 @@ spec:
             cpu: "1000m" #max 1.0 Core
             memory: "512Mi"
         env:
-          - name: SPRING_REDIS_HOST
+          # - name: SPRING_REDIS_HOST
+          #   valueFrom:
+          #     configMapKeyRef:
+          #       name: java-ms
+          #       key: host
+          # - name: SPRING_REDIS_PORT
+          #   valueFrom:
+          #     configMapKeyRef:
+          #       name: java-ms
+          #       key: port
+          - name: REDIS_URL
             valueFrom:
               configMapKeyRef:
-                name: java-ms
-                key: host
-          - name: SPRING_REDIS_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: java-ms
-                key: port
+                name: java-ms-config
+                key: REDIS_URL
         ports:
         - containerPort: 8080
           name: http
