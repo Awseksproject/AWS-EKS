@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: java-ms
-  # labels so that we can bind a Service to this Pod
+  name: nodejs-ms
+  
   labels:
-    app: java-ms
+    app: nodejs-ms
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: java-ms
+      app: nodejs-ms
   template:
     metadata:
       labels:
-        app: java-ms
+        app: nodejs-ms
     spec:
       containers:
-      - name: java-ms
+      - name: nodejs-ms
         image: 250919241461.dkr.ecr.us-east-1.amazonaws.com/tessolve-ecr:latest
         imagePullPolicy: Always
         resources:
@@ -27,21 +27,31 @@ spec:
             cpu: "1000m" #max 1.0 Core
             memory: "512Mi"
         env:
-          # - name: SPRING_REDIS_HOST
-          #   valueFrom:
-          #     configMapKeyRef:
-          #       name: java-ms
-          #       key: host
-          # - name: SPRING_REDIS_PORT
-          #   valueFrom:
-          #     configMapKeyRef:
-          #       name: java-ms
-          #       key: port
-          - name: REDIS_URL
+          - name: DB_USER
             valueFrom:
               configMapKeyRef:
-                name: java-ms-config
-                key: REDIS_URL
+                name: nodejs-ms-config
+                key: DB_USER
+          - name: DB_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: nodejs-ms-config
+                key: DB_PASSWORD
+          - name: DB_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: nodejs-ms-config
+                key: DB_NAME
+          - name: DB_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: nodejs-ms-config
+                key: DB_PORT
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: nodejs-ms-config
+                key: DB_HOST
         ports:
         - containerPort: 8080
           name: http
