@@ -1,0 +1,3 @@
+variable "ecrname" {
+type = string
+}

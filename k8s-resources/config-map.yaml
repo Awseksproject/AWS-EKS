@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: java-ms-config
-  namespace: default
-data:
-  # host: "tessolve-redis-xmpzgc.serverless.use1.cache.amazonaws.com"
-  # port: "6379"
-    REDIS_URL: "simple-rediscache.xmpzgc.ng.0001.use1.cache.amazonaws.com:6379"
