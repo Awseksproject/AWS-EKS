@@ -34,7 +34,7 @@ root_domain_name = "helloworld.info"
 }
 module "rds_instance" {
 source = "./Modules/AmazonRDS"
-db_password = "testdb12345"
+db_password = "test@db1512"
 aws_public_subnet = module.vpc.aws_public_subnet
 vpc_id = module.vpc.vpc_id
 }
