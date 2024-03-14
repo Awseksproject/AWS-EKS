@@ -49,7 +49,7 @@ resource "aws_db_instance" "tessolverds" {
   instance_class         = "db.t3.micro"
   allocated_storage      = 5
   engine                 = "postgres"
-  engine_version         = "14.1"
+  engine_version         = "16.1"
   username               = "tessolve"
  
   db_subnet_group_name   = aws_db_subnet_group.tessolverds.name
