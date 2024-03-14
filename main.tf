@@ -32,9 +32,7 @@ module "Route53" {
 source = "./Modules/Route53"
 root_domain_name = "helloworld.info"
 }
-#module "rds_instance" {
-#  source = "./Modules/AmazonRDS"
-#  allocated_storage     = 10
-#  vpc_security_group_ids = [aws_security_group.rds_sg.id]
-#}
+module "rds_instance" {
+source = "./Modules/AmazonRDS"
+}
 
