@@ -51,7 +51,7 @@ resource "aws_db_instance" "tessolve_rds" {
   engine                 = "postgres"
   engine_version         = "14.1"
   username               = "tessolve"
-  password               = "Testdb@12345"
+ 
   db_subnet_group_name   = aws_db_subnet_group.tessolve_rds.name
   vpc_security_group_ids = [aws_security_group.rds.id]
   parameter_group_name   = aws_db_parameter_group.tessolve_rds.name
