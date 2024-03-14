@@ -16,7 +16,7 @@ type = tolist(aws_acm_certificate.hello_certificate.domain_validation_options)[0
 zone_id = aws_route53_zone.hello_world_zone.zone_id
 ttl = 60
 }
-resource "aws_acm_certificate_validation" "hello_cert_validate" {
-certificate_arn = aws_acm_certificate.hello_certificate.arn
-validation_record_fqdns = [aws_route53_record.hello_cert_dns.fqdn]
-}
+#resource "aws_acm_certificate_validation" "hello_cert_validate" {
+#certificate_arn = aws_acm_certificate.hello_certificate.arn
+#validation_record_fqdns = [aws_route53_record.hello_cert_dns.fqdn]
+#}
