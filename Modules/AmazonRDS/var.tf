@@ -8,5 +8,5 @@ variable "region" {
 variable "db_password" {
   description = "RDS root user password"
   sensitive   = true
-  value       = "Testdb@12345"
+  
 }
