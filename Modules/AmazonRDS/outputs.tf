@@ -1,17 +1,17 @@
 output "rds_hostname" {
   description = "RDS instance hostname"
-  value       = aws_db_instance.tessolve_rds.address
+  value       = aws_db_instance.tessolverds.address
   sensitive   = true
 }
 
 output "rds_port" {
   description = "RDS instance port"
-  value       = aws_db_instance.tessolve_rds.port
+  value       = aws_db_instance.tessolverds.port
   sensitive   = true
 }
 
 output "rds_username" {
   description = "RDS instance root username"
-  value       = aws_db_instance.tessolve_rds.username
+  value       = aws_db_instance.tessolverds.username
   sensitive   = true
 }
