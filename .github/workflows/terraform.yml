@@ -3,7 +3,7 @@ name: Terraform Deploy
 on:
   push:
     branches:
-      - terraform
+      - tfstate
 
 jobs:
   terraform:
@@ -51,3 +51,10 @@ jobs:
 
     - name: Clean up
       run: rm tfplan
+    - name: Push Terraform state file to GitHub
+      run: |
+        git config --global user.email "thaiyal.nayagi@tessolve.com"
+        git config --global user.name "Awseksproject"
+        git add terraform.tfstate
+        git commit -m "Add terraform.tfstate"
+        git push origin tfstate
