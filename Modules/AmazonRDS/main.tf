@@ -2,17 +2,17 @@ data "aws_availability_zones" "available" {}
 
 
 
-resource "aws_db_subnet_group" "tessolverds" {
-  name       = "tessolverds"
+resource "aws_db_subnet_group" "tessolverds2" {
+  name       = "tessolverds2"
   subnet_ids = var.aws_public_subnet
 
   tags = {
-    Name = "tessolve-subnet"
+    Name = "tessolve-subnet2"
   }
 }
 
-resource "aws_security_group" "rds" {
-  name   = "tessolverds"
+resource "aws_security_group" "rds2" {
+  name   = "tessolverds2"
   vpc_id = var.vpc_id
 
   ingress {
@@ -30,12 +30,12 @@ resource "aws_security_group" "rds" {
   }
 
   tags = {
-    Name = "tessolverds"
+    Name = "tessolverds2"
   }
 }
 
-resource "aws_db_parameter_group" "tessolverds" {
-  name   = "tessolverds"
+resource "aws_db_parameter_group" "tessolverds2" {
+  name   = "tessolverds2"
   family = "postgres16"
 
   parameter {
@@ -44,17 +44,17 @@ resource "aws_db_parameter_group" "tessolverds" {
   }
 }
 
-resource "aws_db_instance" "tessolverds" {
-  identifier             = "tessolverds"
+resource "aws_db_instance" "tessolverds2" {
+  identifier             = "tessolverds2"
   instance_class         = "db.t3.micro"
   allocated_storage      = 5
   engine                 = "postgres"
   engine_version         = "16.1"
   username               = "tessolve"
   password               = "dbpassword"
-  db_subnet_group_name   = aws_db_subnet_group.tessolverds.name
-  vpc_security_group_ids = [aws_security_group.rds.id]
-  parameter_group_name   = aws_db_parameter_group.tessolverds.name
+  db_subnet_group_name   = aws_db_subnet_group.tessolverds2.name
+  vpc_security_group_ids = [aws_security_group.rds2.id]
+  parameter_group_name   = aws_db_parameter_group.tessolverds2.name
   publicly_accessible    = true
   skip_final_snapshot    = true
 }
